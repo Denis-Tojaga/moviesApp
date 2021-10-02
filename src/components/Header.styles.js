@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
     padding: 0 20px;
 `;
 
-
+//exporting a Content component that will redner a div with this style bellow
 export const Content = styled.div`
     display:flex;
     align-items: center;
