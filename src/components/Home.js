@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 //config
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 //components
-
+import HeroImage from "./HeroImage";
 
 //hooks
 import { useHomeFetch } from "../hooks/useHomeFetch";
@@ -20,10 +20,17 @@ const Home = () => {
 
     console.log(state);
 
+
+    //we want to check if we have some results in order to show home
     return (
-        <div>
-            Home page
-        </div>
+        <>
+            {state.results[0] ?
+                <HeroImage
+                    image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+                    title={state.results[0].original_title}
+                    text={state.results[0].overview}
+                /> : null}
+        </>
     );
 };
 
