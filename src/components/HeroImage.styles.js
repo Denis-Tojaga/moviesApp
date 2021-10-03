@@ -1,26 +1,17 @@
 import styled from "styled-components";
 
 //here we import the styled method from this library and export the styles for elements that are gonna be shown on HeroImage
-
-
-// linear-gradient(
-//     to bottom, rgba(0,0,0,0)
-//     41%, rgba(0,0,0,0.65)
-//     100%
-// ),
-
-
 export const Wrapper = styled.div`
     background:linear-gradient(
         to bottom, rgba(0,0,0,0)
-        41%, rgba(0,0,0,0.65)
+        45%, rgba(0,0,0,0.65)
         100%
     ),url(${({ image }) => image}), var(--darkGray);
     background-size: 100%,cover;
     background-position: center;
     height:600px;
     position:relative;
-    animation: animateHeroImage 1s;
+    animation: animateHeroImage 0.8s;
 
 
 
@@ -33,7 +24,6 @@ export const Wrapper = styled.div`
             opacity:1;
         }
     }
-
 `;
 
 
@@ -42,7 +32,6 @@ export const Content = styled.div`
     max-width: var(--maxWidth);
     margin: 0 auto;
 `;
-
 
 
 export const Text = styled.div`
