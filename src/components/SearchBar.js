@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 //styles
-import { Wrapper, Content } from './HeroImage.styles';
+import { Wrapper, Content } from './SearchBar.styles';
 //image
 import searchIcon from "../images/search-icon.svg";
 
