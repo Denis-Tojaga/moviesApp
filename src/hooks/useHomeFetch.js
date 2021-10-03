@@ -54,13 +54,15 @@ export const useHomeFetch = () => {
 
 
 
-    //initial render
+    //initial and search
+    //we want to trigger the useEffect when the searchTerm changes that why it's depending on it
     //we have our fetching method now we have to call it inside useEffect, it requires a function as a param
     useEffect(() => {
-        fetchMovies(1);
-    }, []);
+        setState(initialState);
+        fetchMovies(1, searchTerm);
+    }, [searchTerm]);
 
 
     //returning the object with three properties
-    return { state: state, loading: loading, error: error, setSearchTerm: setSearchTerm };
+    return { state: state, loading: loading, error: error, searchTerm: searchTerm, setSearchTerm: setSearchTerm };
 };

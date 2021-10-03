@@ -19,7 +19,7 @@ import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
 
-    const { state, loading, error, setSearchTerm } = useHomeFetch();
+    const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
 
     //we want to check if we have some results in order to show home
     return (
@@ -33,7 +33,7 @@ const Home = () => {
 
             <SearchBar setSearchTerm={setSearchTerm} />
 
-            <Grid header="Popular movies">
+            <Grid header={searchTerm ? "Search results: " : "Popular movies"}>
                 {state.results.map((movie) => {
                     //so for each movie we are rendering a thumbnail
                     //we check if there's a poster_path then we grab that picture, otherwise we dont send picture
