@@ -15,12 +15,17 @@ const initialState = {
 
 //we are exporting this function 
 export const useHomeFetch = () => {
+
+    //searchTerm inside the searchBar
+    const [searchTerm, setSearchTerm] = useState("");
     //state for holding all the movies
     const [state, setState] = useState(initialState);
     //state for loading
     const [loading, setLoading] = useState(false);
     //state for error
     const [error, setError] = useState(false);
+
+
 
 
     //creating a function that will fetch all movies
@@ -57,5 +62,5 @@ export const useHomeFetch = () => {
 
 
     //returning the object with three properties
-    return { state: state, loading: loading, error: error };
+    return { state: state, loading: loading, error: error, setSearchTerm: setSearchTerm };
 };

@@ -3,8 +3,10 @@ import React from "react";
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 //components
 import HeroImage from "./HeroImage";
+import SearchBar from "./SearchBar";
 import Grid from "./Grid";
 import Thumbnail from "./Thumbnail";
+import Spinner from "./Spinner";
 //hooks
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
@@ -17,10 +19,7 @@ import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
 
-    const { state, loading, error } = useHomeFetch();
-
-    console.log(state);
-
+    const { state, loading, error, setSearchTerm } = useHomeFetch();
 
     //we want to check if we have some results in order to show home
     return (
@@ -32,6 +31,8 @@ const Home = () => {
                     text={state.results[0].overview}
                 /> : null}
 
+            <SearchBar setSearchTerm={setSearchTerm} />
+
             <Grid header="Popular movies">
                 {state.results.map((movie) => {
                     //so for each movie we are rendering a thumbnail
@@ -42,6 +43,8 @@ const Home = () => {
                         movieId={movie.id} />
                 })}
             </Grid>
+
+            <Spinner />
         </>
     );
 };
