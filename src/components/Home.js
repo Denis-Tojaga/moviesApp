@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import Grid from "./Grid";
 import Thumbnail from "./Thumbnail";
 import Spinner from "./Spinner";
+import Button from "./Button";
 //hooks
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
@@ -44,7 +45,12 @@ const Home = () => {
                 })}
             </Grid>
 
-            <Spinner />
+            {/*If we are loading something we will show the spinner otherwise no*/}
+            {loading && <Spinner />}
+
+            {/*Checking if we are on the last page of the list of movies and that we aren't loading anything then we want to show the button */}
+            {state.page < state.total_pages && !loading ? <Button text="Load more" /> : null}
+
         </>
     );
 };
