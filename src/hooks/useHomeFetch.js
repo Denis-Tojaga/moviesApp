@@ -16,6 +16,8 @@ const initialState = {
 //we are exporting this function 
 export const useHomeFetch = () => {
 
+    //isLoadingMore flag to know do we have to load more movies
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
     //searchTerm inside the searchBar
     const [searchTerm, setSearchTerm] = useState("");
     //state for holding all the movies
@@ -63,6 +65,17 @@ export const useHomeFetch = () => {
     }, [searchTerm]);
 
 
-    //returning the object with three properties
-    return { state: state, loading: loading, error: error, searchTerm: searchTerm, setSearchTerm: setSearchTerm };
+
+    //if we don't want to load more we are just gonna return, otherwise we are going to load more 
+    //this will be triggered everytime isLoadingMore flag is changed
+    useEffect(() => {
+        if (!isLoadingMore) return false;
+        fetchMovies(state.page + 1, searchTerm);
+
+        setIsLoadingMore(false);
+    }, [isLoadingMore, searchTerm, state.page]);
+
+
+    //returning the object with these properties
+    return { state: state, loading: loading, error: error, searchTerm: searchTerm, setSearchTerm: setSearchTerm, setIsLoadingMore: setIsLoadingMore };
 };

@@ -20,9 +20,12 @@ import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
 
-    const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
+    const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } = useHomeFetch();
 
     //we want to check if we have some results in order to show home
+
+    if (error) return <div>Something went wrong...</div>;
+
     return (
         <>
             {state.results[0] ?
@@ -49,7 +52,7 @@ const Home = () => {
             {loading && <Spinner />}
 
             {/*Checking if we are on the last page of the list of movies and that we aren't loading anything then we want to show the button */}
-            {state.page < state.total_pages && !loading ? <Button text="Load more" /> : null}
+            {state.page < state.total_pages && !loading ? <Button text="Load more" callbackFunction={() => setIsLoadingMore(true)} /> : null}
 
         </>
     );
